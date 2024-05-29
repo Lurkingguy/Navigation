@@ -2,12 +2,12 @@ import os
 import msvcrt    # Cái thư viện giúp m read keyboard
 
 
-character = "Henn"
+character = "timber"
 character_x = 1                          # Starting point
 character_y = 1 
 
-width = 20                                                          #Endcoding the navigation 
-height = 20
+width = 15                                                          #Endcoding the navigation 
+height = 25
 
 
 def clear_screen():
@@ -21,7 +21,7 @@ def display_game():
             if x == character_x and y == character_y:
                 print(character, end=" ")
             else:
-                print(".", end=" ")
+                print("....", end=" ")
         print()
 
 
@@ -31,7 +31,7 @@ def get_key():
 
 while True:
     display_game()
-    key = get_key()
+    key = get_key()                  # get key đây nè
 
     if key == "w":
         character_y -= 1
