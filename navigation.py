@@ -1,37 +1,37 @@
 import os
-import msvcrt    # Cái thư viện giúp m read keyboard
-
+import msvcrt
 
 character = "timber"
-character_x = 1                          # Starting point
-character_y = 1 
+character_x = 1
+character_y = 1
 
-width = 15                                                          #Endcoding the navigation 
-height = 25
+width = 30
+height = 30
 
+
+obstacles = [(10, 15), (5, 20), (20, 10)]
 
 def clear_screen():
-    os.system("cls" if os.name == "nt" else "clear")                # Dùng cái này để clean background
-
+    os.system("cls" if os.name == "nt" else "clear")
 
 def display_game():
     clear_screen()
     for y in range(height):
-        for x in range(width):                                         # End moving nếu character chạm đáy xã hội :D
-            if x == character_x and y == character_y:
+        for x in range(width):
+            if (x, y) == (character_x, character_y):
                 print(character, end=" ")
+            elif (x, y) in obstacles:
+                print("yasuo", end=" ")  
             else:
-                print("....", end=" ")
+                print("  ", end=" ")
         print()
 
-
 def get_key():
-    return msvcrt.getch().decode("utf-8")               # Thao tác keyboard by using a.w.s.d 
-
+    return msvcrt.getch().decode("utf-8")
 
 while True:
     display_game()
-    key = get_key()                  # get key đây nè
+    key = get_key()
 
     if key == "w":
         character_y -= 1
@@ -45,6 +45,10 @@ while True:
         print("Goodbye!")
         break
 
-
     character_x = max(0, min(character_x, width - 1))
     character_y = max(0, min(character_y, height - 1))
+
+
+    if (character_x, character_y) in obstacles:
+        print("You lose!")
+        break
