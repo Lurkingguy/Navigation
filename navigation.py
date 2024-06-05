@@ -42,7 +42,7 @@ while True:
     elif key == "d":
         character_x += 1
     elif key == "q":
-        print("Goodbye!")
+        print("Bye idiot!")
         break
 
     character_x = max(0, min(character_x, width - 1))
@@ -50,5 +50,5 @@ while True:
 
 
     if (character_x, character_y) in obstacles:
-        print("You lose!")
+        print("You dead haha!")
         break
